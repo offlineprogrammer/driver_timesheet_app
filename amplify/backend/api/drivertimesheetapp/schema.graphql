@@ -1,0 +1,20 @@
+
+type DeliveryTime @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  time_in: AWSTime
+  time_out: AWSTime
+  delivery: Delivery! @belongsTo(fields: ["deliveryID"])
+  deliveryID: ID! @index(name: "byDelivery")  
+}
+
+
+
+
+type Delivery @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  delivery_date: AWSDate
+  delivery_times: [DeliveryTime] @hasMany(indexName: "byDelivery", fields: ["id"])
+  total_hrs: Float
+  total_miles: Float
+
+}

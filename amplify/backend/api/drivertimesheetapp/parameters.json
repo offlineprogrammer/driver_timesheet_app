@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "drivertimesheetapp",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authdrivertimesheetapp8037f767",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
