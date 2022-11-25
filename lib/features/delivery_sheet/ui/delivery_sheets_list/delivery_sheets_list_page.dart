@@ -3,7 +3,8 @@ import 'package:driver_timesheet_app/features/delivery_sheet/ui/delivery_sheet_g
 import 'package:driver_timesheet_app/features/delivery_sheet/ui/delivery_sheets_list/add_delivery_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:driver_timesheet_app/common/utils/colors.dart' as constants;
+import 'package:driver_timesheet_app/common/utils/colors.dart' as colors;
+import 'package:driver_timesheet_app/common/utils/constants.dart' as constants;
 
 class DeliverySheetsListPage extends ConsumerWidget {
   const DeliverySheetsListPage({
@@ -27,16 +28,16 @@ class DeliverySheetsListPage extends ConsumerWidget {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'Amplify Trips Planner',
+          constants.appTitle,
         ),
-        backgroundColor: const Color(constants.primaryColorDark),
+        backgroundColor: const Color(colors.primaryColorDark),
       ),
       // drawer: const NavigationDrawer(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showAddTripDialog(context);
         },
-        backgroundColor: const Color(constants.primaryColorDark),
+        backgroundColor: const Color(colors.primaryColorDark),
         child: const Icon(Icons.add),
       ),
       body: deliverySheetsListValue.when(

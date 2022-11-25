@@ -14,6 +14,11 @@ final deliverySheetsListStreamProvider =
   return ref.watch(deliverySheetsListControllerProvider).getDeliverySheets();
 });
 
+final deliverySheetProvider =
+    StreamProvider.autoDispose.family<DeliverySheet?, String>((ref, id) {
+  return ref.watch(deliverySheetsListControllerProvider).get(id);
+});
+
 class DeliverySheetsListController {
   DeliverySheetsListController(this.ref);
   final Ref ref;
@@ -34,5 +39,11 @@ class DeliverySheetsListController {
     final deliverySheetsRepository = ref.read(deliverySheetsRepositoryProvider);
 
     return deliverySheetsRepository.getDeliverySheets();
+  }
+
+  Stream<DeliverySheet> get(String id) {
+    final deliverySheetsRepository = ref.read(deliverySheetsRepositoryProvider);
+
+    return deliverySheetsRepository.get(id);
   }
 }

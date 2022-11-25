@@ -2,7 +2,7 @@ import 'package:driver_timesheet_app/models/ModelProvider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:driver_timesheet_app/common/utils/colors.dart' as constants;
+import 'package:driver_timesheet_app/common/utils/colors.dart' as colors;
 
 class DeliverySheetGridViewItemCard extends StatelessWidget {
   const DeliverySheetGridViewItemCard({
@@ -26,7 +26,7 @@ class DeliverySheetGridViewItemCard extends StatelessWidget {
             child: Container(
               height: 500,
               alignment: Alignment.center,
-              color: const Color(constants.primaryColorDark),
+              color: const Color(colors.primaryColorDark),
               child: Stack(
                 children: [
                   Positioned.fill(
@@ -44,7 +44,8 @@ class DeliverySheetGridViewItemCard extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         DateFormat('MMMM dd, yyyy').format(
-                            deliverySheet.delivery_sheet_date!.getDateTime()),
+                          deliverySheet.delivery_sheet_date!.getDateTime(),
+                        ),
                         style: Theme.of(context)
                             .textTheme
                             .headline5!

@@ -3,7 +3,7 @@ import 'package:driver_timesheet_app/models/ModelProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:driver_timesheet_app/common/navigation/router/routes.dart';
-import 'package:driver_timesheet_app/common/utils/colors.dart' as constants;
+import 'package:driver_timesheet_app/common/utils/colors.dart' as colors;
 
 class DeliverySheetGridViewItem extends StatelessWidget {
   const DeliverySheetGridViewItem({
@@ -21,14 +21,14 @@ class DeliverySheetGridViewItem extends StatelessWidget {
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(15),
       onTap: () {
-        // context.goNamed(
-        //   isPast ? AppRoute.pasttrip.name : AppRoute.deliverySheet.name,
-        //   params: {'id': deliverySheet.id},
-        // );
+        context.goNamed(
+          AppRoute.deliverySheet.name,
+          params: {'id': deliverySheet.id},
+        );
       },
       child: isPast
           ? ColorFiltered(
-              colorFilter: const ColorFilter.matrix(constants.greyoutMatrix),
+              colorFilter: const ColorFilter.matrix(colors.greyoutMatrix),
               child: DeliverySheetGridViewItemCard(
                 deliverySheet: deliverySheet,
               ))

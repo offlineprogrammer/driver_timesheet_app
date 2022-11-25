@@ -1,7 +1,7 @@
 import 'package:driver_timesheet_app/common/navigation/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:amplify_authenticator/amplify_authenticator.dart';
-import 'package:driver_timesheet_app/common/utils/colors.dart' as constants;
+import 'package:driver_timesheet_app/common/utils/colors.dart' as colors;
 
 class DriverTimesheetApp extends StatelessWidget {
   const DriverTimesheetApp({
@@ -15,7 +15,7 @@ class DriverTimesheetApp extends StatelessWidget {
         routerConfig: router,
         builder: Authenticator.builder(),
         theme: ThemeData(
-          primarySwatch: constants.primaryColor,
+          primarySwatch: colors.primaryColor,
           backgroundColor: const Color(0xff82CFEA),
         ),
       ),
