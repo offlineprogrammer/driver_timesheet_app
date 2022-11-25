@@ -19,19 +19,19 @@
 
 // ignore_for_file: public_member_api_docs, annotate_overrides, dead_code, dead_codepublic_member_api_docs, depend_on_referenced_packages, file_names, library_private_types_in_public_api, no_leading_underscores_for_library_prefixes, no_leading_underscores_for_local_identifiers, non_constant_identifier_names, null_check_on_nullable_type_parameter, prefer_adjacent_string_concatenation, prefer_const_constructors, prefer_if_null_operators, prefer_interpolation_to_compose_strings, slash_for_doc_comments, sort_child_properties_last, unnecessary_const, unnecessary_constructor_name, unnecessary_late, unnecessary_new, unnecessary_null_aware_assignments, unnecessary_nullable_for_final_variable_declarations, unnecessary_string_interpolations, use_build_context_synchronously
 
-import 'ModelProvider.dart';
 import 'package:amplify_core/amplify_core.dart';
 import 'package:flutter/foundation.dart';
 
 
-/** This is an auto generated class representing the DeliveryTime type in your schema. */
+/** This is an auto generated class representing the Profile type in your schema. */
 @immutable
-class DeliveryTime extends Model {
-  static const classType = const _DeliveryTimeModelType();
+class Profile extends Model {
+  static const classType = const _ProfileModelType();
   final String id;
-  final TemporalTime? _time_in;
-  final TemporalTime? _time_out;
-  final DeliverySheet? _delivery_sheet;
+  final String? _email;
+  final String? _firstName;
+  final String? _lastName;
+  final String? _owner;
   final TemporalDateTime? _createdAt;
   final TemporalDateTime? _updatedAt;
 
@@ -43,17 +43,30 @@ class DeliveryTime extends Model {
     return id;
   }
   
-  TemporalTime? get time_in {
-    return _time_in;
-  }
-  
-  TemporalTime? get time_out {
-    return _time_out;
-  }
-  
-  DeliverySheet get delivery_sheet {
+  String get email {
     try {
-      return _delivery_sheet!;
+      return _email!;
+    } catch(e) {
+      throw new AmplifyCodeGenModelException(
+          AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
+          recoverySuggestion:
+            AmplifyExceptionMessages.codeGenRequiredFieldForceCastRecoverySuggestion,
+          underlyingException: e.toString()
+          );
+    }
+  }
+  
+  String? get firstName {
+    return _firstName;
+  }
+  
+  String? get lastName {
+    return _lastName;
+  }
+  
+  String get owner {
+    try {
+      return _owner!;
     } catch(e) {
       throw new AmplifyCodeGenModelException(
           AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
@@ -72,14 +85,15 @@ class DeliveryTime extends Model {
     return _updatedAt;
   }
   
-  const DeliveryTime._internal({required this.id, time_in, time_out, required delivery_sheet, createdAt, updatedAt}): _time_in = time_in, _time_out = time_out, _delivery_sheet = delivery_sheet, _createdAt = createdAt, _updatedAt = updatedAt;
+  const Profile._internal({required this.id, required email, firstName, lastName, required owner, createdAt, updatedAt}): _email = email, _firstName = firstName, _lastName = lastName, _owner = owner, _createdAt = createdAt, _updatedAt = updatedAt;
   
-  factory DeliveryTime({String? id, TemporalTime? time_in, TemporalTime? time_out, required DeliverySheet delivery_sheet}) {
-    return DeliveryTime._internal(
+  factory Profile({String? id, required String email, String? firstName, String? lastName, required String owner}) {
+    return Profile._internal(
       id: id == null ? UUID.getUUID() : id,
-      time_in: time_in,
-      time_out: time_out,
-      delivery_sheet: delivery_sheet);
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+      owner: owner);
   }
   
   bool equals(Object other) {
@@ -89,11 +103,12 @@ class DeliveryTime extends Model {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is DeliveryTime &&
+    return other is Profile &&
       id == other.id &&
-      _time_in == other._time_in &&
-      _time_out == other._time_out &&
-      _delivery_sheet == other._delivery_sheet;
+      _email == other._email &&
+      _firstName == other._firstName &&
+      _lastName == other._lastName &&
+      _owner == other._owner;
   }
   
   @override
@@ -103,11 +118,12 @@ class DeliveryTime extends Model {
   String toString() {
     var buffer = new StringBuffer();
     
-    buffer.write("DeliveryTime {");
+    buffer.write("Profile {");
     buffer.write("id=" + "$id" + ", ");
-    buffer.write("time_in=" + (_time_in != null ? _time_in!.format() : "null") + ", ");
-    buffer.write("time_out=" + (_time_out != null ? _time_out!.format() : "null") + ", ");
-    buffer.write("delivery_sheet=" + (_delivery_sheet != null ? _delivery_sheet!.toString() : "null") + ", ");
+    buffer.write("email=" + "$_email" + ", ");
+    buffer.write("firstName=" + "$_firstName" + ", ");
+    buffer.write("lastName=" + "$_lastName" + ", ");
+    buffer.write("owner=" + "$_owner" + ", ");
     buffer.write("createdAt=" + (_createdAt != null ? _createdAt!.format() : "null") + ", ");
     buffer.write("updatedAt=" + (_updatedAt != null ? _updatedAt!.format() : "null"));
     buffer.write("}");
@@ -115,75 +131,83 @@ class DeliveryTime extends Model {
     return buffer.toString();
   }
   
-  DeliveryTime copyWith({String? id, TemporalTime? time_in, TemporalTime? time_out, DeliverySheet? delivery_sheet}) {
-    return DeliveryTime._internal(
+  Profile copyWith({String? id, String? email, String? firstName, String? lastName, String? owner}) {
+    return Profile._internal(
       id: id ?? this.id,
-      time_in: time_in ?? this.time_in,
-      time_out: time_out ?? this.time_out,
-      delivery_sheet: delivery_sheet ?? this.delivery_sheet);
+      email: email ?? this.email,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      owner: owner ?? this.owner);
   }
   
-  DeliveryTime.fromJson(Map<String, dynamic> json)  
+  Profile.fromJson(Map<String, dynamic> json)  
     : id = json['id'],
-      _time_in = json['time_in'] != null ? TemporalTime.fromString(json['time_in']) : null,
-      _time_out = json['time_out'] != null ? TemporalTime.fromString(json['time_out']) : null,
-      _delivery_sheet = json['delivery_sheet']?['serializedData'] != null
-        ? DeliverySheet.fromJson(new Map<String, dynamic>.from(json['delivery_sheet']['serializedData']))
-        : null,
+      _email = json['email'],
+      _firstName = json['firstName'],
+      _lastName = json['lastName'],
+      _owner = json['owner'],
       _createdAt = json['createdAt'] != null ? TemporalDateTime.fromString(json['createdAt']) : null,
       _updatedAt = json['updatedAt'] != null ? TemporalDateTime.fromString(json['updatedAt']) : null;
   
   Map<String, dynamic> toJson() => {
-    'id': id, 'time_in': _time_in?.format(), 'time_out': _time_out?.format(), 'delivery_sheet': _delivery_sheet?.toJson(), 'createdAt': _createdAt?.format(), 'updatedAt': _updatedAt?.format()
+    'id': id, 'email': _email, 'firstName': _firstName, 'lastName': _lastName, 'owner': _owner, 'createdAt': _createdAt?.format(), 'updatedAt': _updatedAt?.format()
   };
 
   static final QueryField ID = QueryField(fieldName: "id");
-  static final QueryField TIME_IN = QueryField(fieldName: "time_in");
-  static final QueryField TIME_OUT = QueryField(fieldName: "time_out");
-  static final QueryField DELIVERY_SHEET = QueryField(
-    fieldName: "delivery_sheet",
-    fieldType: ModelFieldType(ModelFieldTypeEnum.model, ofModelName: (DeliverySheet).toString()));
+  static final QueryField EMAIL = QueryField(fieldName: "email");
+  static final QueryField FIRSTNAME = QueryField(fieldName: "firstName");
+  static final QueryField LASTNAME = QueryField(fieldName: "lastName");
+  static final QueryField OWNER = QueryField(fieldName: "owner");
   static var schema = Model.defineSchema(define: (ModelSchemaDefinition modelSchemaDefinition) {
-    modelSchemaDefinition.name = "DeliveryTime";
-    modelSchemaDefinition.pluralName = "DeliveryTimes";
+    modelSchemaDefinition.name = "Profile";
+    modelSchemaDefinition.pluralName = "Profiles";
     
     modelSchemaDefinition.authRules = [
+      AuthRule(
+        authStrategy: AuthStrategy.PRIVATE,
+        provider: AuthRuleProvider.IAM,
+        operations: [
+          ModelOperation.CREATE,
+          ModelOperation.UPDATE,
+          ModelOperation.DELETE,
+          ModelOperation.READ
+        ]),
       AuthRule(
         authStrategy: AuthStrategy.OWNER,
         ownerField: "owner",
         identityClaim: "cognito:username",
         provider: AuthRuleProvider.USERPOOLS,
         operations: [
-          ModelOperation.CREATE,
+          ModelOperation.READ,
           ModelOperation.UPDATE,
-          ModelOperation.DELETE,
-          ModelOperation.READ
+          ModelOperation.CREATE
         ])
-    ];
-    
-    modelSchemaDefinition.indexes = [
-      ModelIndex(fields: const ["deliverySheetID"], name: "byDeliverySheet")
     ];
     
     modelSchemaDefinition.addField(ModelFieldDefinition.id());
     
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: DeliveryTime.TIME_IN,
-      isRequired: false,
-      ofType: ModelFieldType(ModelFieldTypeEnum.time)
+      key: Profile.EMAIL,
+      isRequired: true,
+      ofType: ModelFieldType(ModelFieldTypeEnum.string)
     ));
     
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: DeliveryTime.TIME_OUT,
+      key: Profile.FIRSTNAME,
       isRequired: false,
-      ofType: ModelFieldType(ModelFieldTypeEnum.time)
+      ofType: ModelFieldType(ModelFieldTypeEnum.string)
     ));
     
-    modelSchemaDefinition.addField(ModelFieldDefinition.belongsTo(
-      key: DeliveryTime.DELIVERY_SHEET,
+    modelSchemaDefinition.addField(ModelFieldDefinition.field(
+      key: Profile.LASTNAME,
+      isRequired: false,
+      ofType: ModelFieldType(ModelFieldTypeEnum.string)
+    ));
+    
+    modelSchemaDefinition.addField(ModelFieldDefinition.field(
+      key: Profile.OWNER,
       isRequired: true,
-      targetName: "deliverySheetID",
-      ofModelName: (DeliverySheet).toString()
+      ofType: ModelFieldType(ModelFieldTypeEnum.string)
     ));
     
     modelSchemaDefinition.addField(ModelFieldDefinition.nonQueryField(
@@ -202,11 +226,11 @@ class DeliveryTime extends Model {
   });
 }
 
-class _DeliveryTimeModelType extends ModelType<DeliveryTime> {
-  const _DeliveryTimeModelType();
+class _ProfileModelType extends ModelType<Profile> {
+  const _ProfileModelType();
   
   @override
-  DeliveryTime fromJson(Map<String, dynamic> jsonData) {
-    return DeliveryTime.fromJson(jsonData);
+  Profile fromJson(Map<String, dynamic> jsonData) {
+    return Profile.fromJson(jsonData);
   }
 }

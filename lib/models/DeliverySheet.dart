@@ -17,7 +17,7 @@
 // Generated files can be excluded from analysis in analysis_options.yaml
 // For more info, see: https://dart.dev/guides/language/analysis-options#excluding-code-from-analysis
 
-// ignore_for_file: public_member_api_docs, file_names, unnecessary_new, prefer_if_null_operators, prefer_const_constructors, slash_for_doc_comments, annotate_overrides, non_constant_identifier_names, unnecessary_string_interpolations, prefer_adjacent_string_concatenation, unnecessary_const, dead_code
+// ignore_for_file: public_member_api_docs, annotate_overrides, dead_code, dead_codepublic_member_api_docs, depend_on_referenced_packages, file_names, library_private_types_in_public_api, no_leading_underscores_for_library_prefixes, no_leading_underscores_for_local_identifiers, non_constant_identifier_names, null_check_on_nullable_type_parameter, prefer_adjacent_string_concatenation, prefer_const_constructors, prefer_if_null_operators, prefer_interpolation_to_compose_strings, slash_for_doc_comments, sort_child_properties_last, unnecessary_const, unnecessary_constructor_name, unnecessary_late, unnecessary_new, unnecessary_null_aware_assignments, unnecessary_nullable_for_final_variable_declarations, unnecessary_string_interpolations, use_build_context_synchronously
 
 import 'ModelProvider.dart';
 import 'package:amplify_core/amplify_core.dart';
@@ -25,13 +25,13 @@ import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
 
-/** This is an auto generated class representing the Delivery type in your schema. */
+/** This is an auto generated class representing the DeliverySheet type in your schema. */
 @immutable
-class Delivery extends Model {
-  static const classType = const _DeliveryModelType();
+class DeliverySheet extends Model {
+  static const classType = const _DeliverySheetModelType();
   final String id;
-  final TemporalDate? _delivery_date;
-  final List<DeliveryTime>? _delivery_times;
+  final TemporalDate? _delivery_sheet_date;
+  final List<DeliveryTime>? _delivery_sheet_times;
   final double? _total_hrs;
   final double? _total_miles;
   final TemporalDateTime? _createdAt;
@@ -45,12 +45,12 @@ class Delivery extends Model {
     return id;
   }
   
-  TemporalDate? get delivery_date {
-    return _delivery_date;
+  TemporalDate? get delivery_sheet_date {
+    return _delivery_sheet_date;
   }
   
-  List<DeliveryTime>? get delivery_times {
-    return _delivery_times;
+  List<DeliveryTime>? get delivery_sheet_times {
+    return _delivery_sheet_times;
   }
   
   double? get total_hrs {
@@ -69,13 +69,13 @@ class Delivery extends Model {
     return _updatedAt;
   }
   
-  const Delivery._internal({required this.id, delivery_date, delivery_times, total_hrs, total_miles, createdAt, updatedAt}): _delivery_date = delivery_date, _delivery_times = delivery_times, _total_hrs = total_hrs, _total_miles = total_miles, _createdAt = createdAt, _updatedAt = updatedAt;
+  const DeliverySheet._internal({required this.id, delivery_sheet_date, delivery_sheet_times, total_hrs, total_miles, createdAt, updatedAt}): _delivery_sheet_date = delivery_sheet_date, _delivery_sheet_times = delivery_sheet_times, _total_hrs = total_hrs, _total_miles = total_miles, _createdAt = createdAt, _updatedAt = updatedAt;
   
-  factory Delivery({String? id, TemporalDate? delivery_date, List<DeliveryTime>? delivery_times, double? total_hrs, double? total_miles}) {
-    return Delivery._internal(
+  factory DeliverySheet({String? id, TemporalDate? delivery_sheet_date, List<DeliveryTime>? delivery_sheet_times, double? total_hrs, double? total_miles}) {
+    return DeliverySheet._internal(
       id: id == null ? UUID.getUUID() : id,
-      delivery_date: delivery_date,
-      delivery_times: delivery_times != null ? List<DeliveryTime>.unmodifiable(delivery_times) : delivery_times,
+      delivery_sheet_date: delivery_sheet_date,
+      delivery_sheet_times: delivery_sheet_times != null ? List<DeliveryTime>.unmodifiable(delivery_sheet_times) : delivery_sheet_times,
       total_hrs: total_hrs,
       total_miles: total_miles);
   }
@@ -87,10 +87,10 @@ class Delivery extends Model {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Delivery &&
+    return other is DeliverySheet &&
       id == other.id &&
-      _delivery_date == other._delivery_date &&
-      DeepCollectionEquality().equals(_delivery_times, other._delivery_times) &&
+      _delivery_sheet_date == other._delivery_sheet_date &&
+      DeepCollectionEquality().equals(_delivery_sheet_times, other._delivery_sheet_times) &&
       _total_hrs == other._total_hrs &&
       _total_miles == other._total_miles;
   }
@@ -102,9 +102,9 @@ class Delivery extends Model {
   String toString() {
     var buffer = new StringBuffer();
     
-    buffer.write("Delivery {");
+    buffer.write("DeliverySheet {");
     buffer.write("id=" + "$id" + ", ");
-    buffer.write("delivery_date=" + (_delivery_date != null ? _delivery_date!.format() : "null") + ", ");
+    buffer.write("delivery_sheet_date=" + (_delivery_sheet_date != null ? _delivery_sheet_date!.format() : "null") + ", ");
     buffer.write("total_hrs=" + (_total_hrs != null ? _total_hrs!.toString() : "null") + ", ");
     buffer.write("total_miles=" + (_total_miles != null ? _total_miles!.toString() : "null") + ", ");
     buffer.write("createdAt=" + (_createdAt != null ? _createdAt!.format() : "null") + ", ");
@@ -114,20 +114,20 @@ class Delivery extends Model {
     return buffer.toString();
   }
   
-  Delivery copyWith({String? id, TemporalDate? delivery_date, List<DeliveryTime>? delivery_times, double? total_hrs, double? total_miles}) {
-    return Delivery._internal(
+  DeliverySheet copyWith({String? id, TemporalDate? delivery_sheet_date, List<DeliveryTime>? delivery_sheet_times, double? total_hrs, double? total_miles}) {
+    return DeliverySheet._internal(
       id: id ?? this.id,
-      delivery_date: delivery_date ?? this.delivery_date,
-      delivery_times: delivery_times ?? this.delivery_times,
+      delivery_sheet_date: delivery_sheet_date ?? this.delivery_sheet_date,
+      delivery_sheet_times: delivery_sheet_times ?? this.delivery_sheet_times,
       total_hrs: total_hrs ?? this.total_hrs,
       total_miles: total_miles ?? this.total_miles);
   }
   
-  Delivery.fromJson(Map<String, dynamic> json)  
+  DeliverySheet.fromJson(Map<String, dynamic> json)  
     : id = json['id'],
-      _delivery_date = json['delivery_date'] != null ? TemporalDate.fromString(json['delivery_date']) : null,
-      _delivery_times = json['delivery_times'] is List
-        ? (json['delivery_times'] as List)
+      _delivery_sheet_date = json['delivery_sheet_date'] != null ? TemporalDate.fromString(json['delivery_sheet_date']) : null,
+      _delivery_sheet_times = json['delivery_sheet_times'] is List
+        ? (json['delivery_sheet_times'] as List)
           .where((e) => e?['serializedData'] != null)
           .map((e) => DeliveryTime.fromJson(new Map<String, dynamic>.from(e['serializedData'])))
           .toList()
@@ -138,19 +138,19 @@ class Delivery extends Model {
       _updatedAt = json['updatedAt'] != null ? TemporalDateTime.fromString(json['updatedAt']) : null;
   
   Map<String, dynamic> toJson() => {
-    'id': id, 'delivery_date': _delivery_date?.format(), 'delivery_times': _delivery_times?.map((DeliveryTime? e) => e?.toJson()).toList(), 'total_hrs': _total_hrs, 'total_miles': _total_miles, 'createdAt': _createdAt?.format(), 'updatedAt': _updatedAt?.format()
+    'id': id, 'delivery_sheet_date': _delivery_sheet_date?.format(), 'delivery_sheet_times': _delivery_sheet_times?.map((DeliveryTime? e) => e?.toJson()).toList(), 'total_hrs': _total_hrs, 'total_miles': _total_miles, 'createdAt': _createdAt?.format(), 'updatedAt': _updatedAt?.format()
   };
 
-  static final QueryField ID = QueryField(fieldName: "delivery.id");
-  static final QueryField DELIVERY_DATE = QueryField(fieldName: "delivery_date");
-  static final QueryField DELIVERY_TIMES = QueryField(
-    fieldName: "delivery_times",
+  static final QueryField ID = QueryField(fieldName: "id");
+  static final QueryField DELIVERY_SHEET_DATE = QueryField(fieldName: "delivery_sheet_date");
+  static final QueryField DELIVERY_SHEET_TIMES = QueryField(
+    fieldName: "delivery_sheet_times",
     fieldType: ModelFieldType(ModelFieldTypeEnum.model, ofModelName: (DeliveryTime).toString()));
   static final QueryField TOTAL_HRS = QueryField(fieldName: "total_hrs");
   static final QueryField TOTAL_MILES = QueryField(fieldName: "total_miles");
   static var schema = Model.defineSchema(define: (ModelSchemaDefinition modelSchemaDefinition) {
-    modelSchemaDefinition.name = "Delivery";
-    modelSchemaDefinition.pluralName = "Deliveries";
+    modelSchemaDefinition.name = "DeliverySheet";
+    modelSchemaDefinition.pluralName = "DeliverySheets";
     
     modelSchemaDefinition.authRules = [
       AuthRule(
@@ -169,26 +169,26 @@ class Delivery extends Model {
     modelSchemaDefinition.addField(ModelFieldDefinition.id());
     
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: Delivery.DELIVERY_DATE,
+      key: DeliverySheet.DELIVERY_SHEET_DATE,
       isRequired: false,
       ofType: ModelFieldType(ModelFieldTypeEnum.date)
     ));
     
     modelSchemaDefinition.addField(ModelFieldDefinition.hasMany(
-      key: Delivery.DELIVERY_TIMES,
+      key: DeliverySheet.DELIVERY_SHEET_TIMES,
       isRequired: false,
       ofModelName: (DeliveryTime).toString(),
-      associatedKey: DeliveryTime.DELIVERY
+      associatedKey: DeliveryTime.DELIVERY_SHEET
     ));
     
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: Delivery.TOTAL_HRS,
+      key: DeliverySheet.TOTAL_HRS,
       isRequired: false,
       ofType: ModelFieldType(ModelFieldTypeEnum.double)
     ));
     
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: Delivery.TOTAL_MILES,
+      key: DeliverySheet.TOTAL_MILES,
       isRequired: false,
       ofType: ModelFieldType(ModelFieldTypeEnum.double)
     ));
@@ -209,11 +209,11 @@ class Delivery extends Model {
   });
 }
 
-class _DeliveryModelType extends ModelType<Delivery> {
-  const _DeliveryModelType();
+class _DeliverySheetModelType extends ModelType<DeliverySheet> {
+  const _DeliverySheetModelType();
   
   @override
-  Delivery fromJson(Map<String, dynamic> jsonData) {
-    return Delivery.fromJson(jsonData);
+  DeliverySheet fromJson(Map<String, dynamic> jsonData) {
+    return DeliverySheet.fromJson(jsonData);
   }
 }

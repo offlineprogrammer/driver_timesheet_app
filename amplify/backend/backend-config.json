@@ -48,7 +48,11 @@
               "userPoolId": "authdrivertimesheetapp8037f767"
             }
           },
-          "additionalAuthenticationProviders": []
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ]
         }
       }
     }

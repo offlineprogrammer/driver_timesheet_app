@@ -1,5 +1,5 @@
 {
-  "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"8.0.1\",\"stackType\":\"auth-Cognito\",\"metadata\":{}}",
+  "Description": "Amplify Cognito Stack for AWS Amplify CLI",
   "AWSTemplateFormatVersion": "2010-09-09",
   "Parameters": {
     "env": {
@@ -127,79 +127,6 @@
     }
   },
   "Resources": {
-    "SNSRole": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Sid": "",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "cognito-idp.amazonaws.com"
-              },
-              "Action": [
-                "sts:AssumeRole"
-              ],
-              "Condition": {
-                "StringEquals": {
-                  "sts:ExternalId": "driver8037f767_role_external_id"
-                }
-              }
-            }
-          ]
-        },
-        "Policies": [
-          {
-            "PolicyDocument": {
-              "Version": "2012-10-17",
-              "Statement": [
-                {
-                  "Effect": "Allow",
-                  "Action": [
-                    "sns:Publish"
-                  ],
-                  "Resource": "*"
-                }
-              ]
-            },
-            "PolicyName": "driver8037f767-sns-policy"
-          }
-        ],
-        "RoleName": {
-          "Fn::If": [
-            "ShouldNotCreateEnvResources",
-            "driver8037f767_sns-role",
-            {
-              "Fn::Join": [
-                "",
-                [
-                  "sns8037f767",
-                  {
-                    "Fn::Select": [
-                      3,
-                      {
-                        "Fn::Split": [
-                          "-",
-                          {
-                            "Ref": "AWS::StackName"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "-",
-                  {
-                    "Ref": "env"
-                  }
-                ]
-              ]
-            }
-          ]
-        }
-      }
-    },
     "UserPool": {
       "Type": "AWS::Cognito::UserPool",
       "Properties": {
@@ -233,21 +160,6 @@
             "Required": true
           }
         ],
-        "SmsAuthenticationMessage": {
-          "Ref": "smsAuthenticationMessage"
-        },
-        "SmsConfiguration": {
-          "ExternalId": "driver8037f767_role_external_id",
-          "SnsCallerArn": {
-            "Fn::GetAtt": [
-              "SNSRole",
-              "Arn"
-            ]
-          }
-        },
-        "SmsVerificationMessage": {
-          "Ref": "smsVerificationMessage"
-        },
         "UsernameAttributes": {
           "Ref": "usernameAttributes"
         },
@@ -284,6 +196,9 @@
         "ClientName": "driver8037f767_app_clientWeb",
         "RefreshTokenValidity": {
           "Ref": "userpoolClientRefreshTokenValidity"
+        },
+        "TokenValidityUnits": {
+          "RefreshToken": "days"
         }
       },
       "DependsOn": [
@@ -302,6 +217,9 @@
         },
         "RefreshTokenValidity": {
           "Ref": "userpoolClientRefreshTokenValidity"
+        },
+        "TokenValidityUnits": {
+          "RefreshToken": "days"
         }
       },
       "DependsOn": [
@@ -374,7 +292,7 @@
           ]
         },
         "Handler": "index.handler",
-        "Runtime": "nodejs12.x",
+        "Runtime": "nodejs14.x",
         "Timeout": 300
       },
       "DependsOn": [
@@ -618,15 +536,6 @@
         ]
       },
       "Condition": "ShouldOutputAppClientSecrets"
-    },
-    "CreatedSNSRole": {
-      "Description": "role arn",
-      "Value": {
-        "Fn::GetAtt": [
-          "SNSRole",
-          "Arn"
-        ]
-      }
     }
   }
 }

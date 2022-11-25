@@ -3,7 +3,6 @@
   "serviceConfiguration": {
     "apiName": "drivertimesheetapp",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/Users/malakamm/development/driver_timesheet_app/amplify/backend/api/drivertimesheetapp/schema.graphql",
     "defaultAuthType": {
       "mode": "AMAZON_COGNITO_USER_POOLS",
       "cognitoUserPoolId": "authdrivertimesheetapp8037f767"
@@ -12,6 +11,11 @@
       "defaultResolutionStrategy": {
         "type": "AUTOMERGE"
       }
-    }
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "AWS_IAM"
+      }
+    ]
   }
 }

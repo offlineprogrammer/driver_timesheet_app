@@ -3,18 +3,35 @@ type DeliveryTime @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   time_in: AWSTime
   time_out: AWSTime
-  delivery: Delivery! @belongsTo(fields: ["deliveryID"])
-  deliveryID: ID! @index(name: "byDelivery")  
+  delivery_sheet: DeliverySheet! @belongsTo(fields: ["deliverySheetID"])
+  deliverySheetID: ID! @index(name: "byDeliverySheet")  
 }
 
 
 
 
-type Delivery @model @auth(rules: [{ allow: owner }]) {
+type DeliverySheet @model @auth(rules: [{ allow: owner }]) {
   id: ID!
-  delivery_date: AWSDate
-  delivery_times: [DeliveryTime] @hasMany(indexName: "byDelivery", fields: ["id"])
+  delivery_sheet_date: AWSDate
+  delivery_sheet_times: [DeliveryTime] @hasMany(indexName: "byDeliverySheet", fields: ["id"])
   total_hrs: Float
   total_miles: Float
 
 }
+
+type Profile
+  @model
+  @auth(
+    rules: [
+      { allow: private, provider: iam }
+      { allow: owner, operations: [read, update, create] }
+    ]
+  ) {
+  id: ID!
+  email: String!
+  firstName: String
+  lastName: String
+
+  owner: String! 
+}
+ 
